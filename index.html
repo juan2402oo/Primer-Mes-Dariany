@@ -325,6 +325,7 @@
     }
 
     .princess-audio {
+      position: relative;
       display: grid;
       gap: 8px;
       width: min(100%, 300px);
@@ -335,6 +336,69 @@
       border: 1px solid #e99ab8;
       border-radius: 20px;
       box-shadow: 0 7px 18px rgba(180, 78, 112, 0.16), inset 0 0 0 3px rgba(255, 255, 255, 0.5);
+    }
+
+    .audio-butterfly {
+      position: absolute;
+      top: -30px;
+      right: -34px;
+      z-index: 10;
+      display: block;
+      width: 72px;
+      height: 56px;
+      pointer-events: none;
+      animation: audio-butterfly-orbit 3.4s ease-in-out infinite;
+    }
+
+    .audio-butterfly img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 3px rgba(104, 57, 91, 0.2));
+    }
+
+    .audio-butterfly::before,
+    .audio-butterfly::after {
+      position: absolute;
+      width: 10px;
+      height: 10px;
+      background: linear-gradient(135deg, #fffbd0, #ffd85c 55%, #eaa629);
+      clip-path: polygon(50% 0, 62% 36%, 100% 50%, 62% 64%, 50% 100%, 38% 64%, 0 50%, 38% 36%);
+      filter: drop-shadow(0 0 5px rgba(255, 232, 137, 1)) drop-shadow(0 0 10px rgba(242, 180, 45, 0.9));
+      content: "";
+      animation: bee-sparkle 1.05s ease-in-out infinite;
+    }
+
+    .audio-butterfly::before {
+      top: 3px;
+      left: 3px;
+    }
+
+    .audio-butterfly::after {
+      right: 0;
+      bottom: 1px;
+      width: 8px;
+      height: 8px;
+      animation-delay: -520ms;
+    }
+
+    @keyframes audio-butterfly-orbit {
+      0%, 100% {
+        transform: translate(0, 0) rotate(-3deg);
+      }
+
+      25% {
+        transform: translate(4px, -2px) rotate(3deg);
+      }
+
+      50% {
+        transform: translate(1px, -5px) rotate(1deg);
+      }
+
+      75% {
+        transform: translate(-3px, -2px) rotate(-4deg);
+      }
     }
 
     .princess-audio-header {
@@ -482,6 +546,7 @@
 
     .message {
       position: relative;
+      z-index: 1;
       max-width: 390px;
       margin: 0 auto;
       padding: 20px 22px;
@@ -493,6 +558,81 @@
       font-size: 1.08rem;
       font-style: italic;
       line-height: 1.6;
+    }
+
+    .message-bee {
+      position: absolute;
+      top: -34px;
+      left: 16px;
+      z-index: 5;
+      display: block;
+      width: 62px;
+      height: 72px;
+      pointer-events: none;
+      animation: bee-circular-flight 3.2s ease-in-out infinite;
+    }
+
+    .message-bee img {
+      display: block;
+      width: 100%;
+      height: 100%;
+      object-fit: contain;
+      filter: drop-shadow(0 2px 4px rgba(99, 62, 70, 0.25));
+    }
+
+    .message-bee::before,
+    .message-bee::after {
+      position: absolute;
+      width: 11px;
+      height: 11px;
+      background: linear-gradient(135deg, #fffbd0, #ffd85c 55%, #eaa629);
+      clip-path: polygon(50% 0, 62% 36%, 100% 50%, 62% 64%, 50% 100%, 38% 64%, 0 50%, 38% 36%);
+      filter: drop-shadow(0 0 5px rgba(255, 232, 137, 1)) drop-shadow(0 0 10px rgba(242, 180, 45, 0.9));
+      content: "";
+      animation: bee-sparkle 1.05s ease-in-out infinite;
+    }
+
+    .message-bee::before {
+      top: 4px;
+      left: -5px;
+    }
+
+    .message-bee::after {
+      right: -3px;
+      bottom: 5px;
+      width: 8px;
+      height: 8px;
+      animation-delay: -520ms;
+    }
+
+    @keyframes bee-circular-flight {
+      0%, 100% {
+        transform: translate(0, 0) rotate(-2deg);
+      }
+
+      25% {
+        transform: translate(4px, -2px) rotate(2deg);
+      }
+
+      50% {
+        transform: translate(1px, -5px) rotate(1deg);
+      }
+
+      75% {
+        transform: translate(-3px, -2px) rotate(-3deg);
+      }
+    }
+
+    @keyframes bee-sparkle {
+      0%, 100% {
+        opacity: 0.5;
+        transform: scale(0.65) rotate(0deg);
+      }
+
+      50% {
+        opacity: 1;
+        transform: scale(1.45) rotate(40deg);
+      }
     }
 
     .message::before {
@@ -1087,6 +1227,12 @@
         gap: clamp(8px, 3vw, 14px);
       }
 
+      .audio-butterfly {
+        right: -28px;
+        width: 64px;
+        height: 50px;
+      }
+
       .bottom-illustrations .corner-illustration {
         left: 0;
         top: 0;
@@ -1237,8 +1383,11 @@
     </section>
 
     <p class="hero-message">Con mucho amor te invitamos a celebrar</p>
-    <p class="theme-note"><span aria-hidden="true">🎀</span> Un día muy dulce <span aria-hidden="true">🌸</span></p>
+    <p class="theme-note">
+      <span aria-hidden="true">🎀</span> Un día muy dulce <span aria-hidden="true">🌸</span>
+    </p>
     <div class="princess-audio" role="group" aria-label="Reproductor de audio">
+      <span class="audio-butterfly" aria-hidden="true"><img src="./mari.png" alt=""></span>
       <div class="princess-audio-header">
         <p class="princess-audio-title">Mi Princesa &lt;3</p>
         <span class="princess-audio-heart" aria-hidden="true">♥</span>
@@ -1273,6 +1422,7 @@
     <div class="divider" aria-hidden="true">♡</div>
 
     <p class="message">
+      <span class="message-bee" aria-hidden="true"><img src="./abejamaya.png" alt=""></span>
       Un mes llenando nuestras vidas de ternura, sonrisas y mucho amor.
       Nos encantaría compartir contigo este día tan especial.
     </p>
