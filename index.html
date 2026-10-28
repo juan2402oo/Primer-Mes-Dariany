@@ -1037,7 +1037,19 @@
         position: relative;
         right: auto;
         bottom: auto;
+        justify-content: center;
         margin: 8px 0 -18px;
+      }
+
+      .photo-dialog {
+        width: calc(100vw - 24px);
+        max-width: calc(100vw - 24px);
+        padding: 10px;
+      }
+
+      .photo-dialog img {
+        max-width: 100%;
+        margin: 0 auto;
       }
 
       .hero-heading {
@@ -1109,16 +1121,6 @@
 
       .sparkle.two {
         right: 22px;
-      }
-    }
-
-    @media (min-width: 370px) and (max-width: 420px) and (min-resolution: 0.99dppx) and (max-resolution: 1.01dppx) {
-      .bottom-illustrations {
-        justify-content: center;
-      }
-
-      .bottom-illustrations .corner-illustration {
-        left: 12px;
       }
     }
 
