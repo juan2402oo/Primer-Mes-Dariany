@@ -1019,13 +1019,21 @@
 
     @media (max-width: 480px) {
       body {
+        width: 100%;
+        min-width: 0;
         padding: 16px 10px;
       }
 
       .invitation {
+        width: 100%;
+        min-width: 0;
         min-height: 0;
         padding: 56px 18px 32px;
         border-radius: 190px 190px 24px 24px;
+      }
+
+      .princess-audio-controls {
+        gap: clamp(8px, 3vw, 14px);
       }
 
       .bottom-illustrations .corner-illustration {
@@ -1042,14 +1050,28 @@
       }
 
       .photo-dialog {
-        width: calc(100vw - 24px);
-        max-width: calc(100vw - 24px);
+        position: fixed;
+        inset: 12px;
+        width: auto;
+        max-width: none;
+        max-height: calc(100vh - 24px);
         padding: 10px;
+        margin: auto;
       }
 
       .photo-dialog img {
         max-width: 100%;
         margin: 0 auto;
+      }
+
+      @supports (height: 100dvh) {
+        .photo-dialog {
+          max-height: calc(100dvh - 24px);
+        }
+
+        .photo-dialog img {
+          max-height: max(80px, calc(100dvh - 190px));
+        }
       }
 
       .hero-heading {
